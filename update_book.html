@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book - Library Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h1>College <span>Library</span> System</h1>
+            </a>
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/add">Add Book</a></li>
+                        <li><a href="/search">Search Book</a></li>
+                    </ul>
+                </nav>
+                {{user_nav}}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="card form-card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">Update Book Details</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modify the information for Book #{{book_id}}</p>
+                </div>
+            </div>
+
+            <!-- Notification Message Banner -->
+            {{alert_message}}
+
+            <!-- Update Book Form -->
+            <form action="/update" method="POST">
+                <!-- Hidden input to store book ID -->
+                <input type="hidden" name="id" value="{{book_id}}">
+
+                <div class="form-group">
+                    <label for="title">Book Title *</label>
+                    <input type="text" id="title" name="title" class="form-control" value="{{title}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author Name *</label>
+                    <input type="text" id="author" name="author" class="form-control" value="{{author}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <input type="text" id="category" name="category" list="category-options" class="form-control" value="{{category}}" required>
+                    <datalist id="category-options">
+                        <option value="Computer Science">
+                        <option value="Software Engineering">
+                        <option value="Database Systems">
+                        <option value="Networking">
+                        <option value="Artificial Intelligence">
+                        <option value="Data Structures">
+                        <option value="Mathematics">
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity Available *</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control" value="{{quantity}}" min="0" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>B.Tech CSE Project &bull; Library Management System &bull; Pure Python & MySQL</p>
+    </footer>
+
+</body>
+</html>

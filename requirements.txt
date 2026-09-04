@@ -1,0 +1,3 @@
+# MySQL Connector for Python
+# Install using: pip install -r requirements.txt
+mysql-connector-python>=8.0.0

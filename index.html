@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h1>College <span>Library</span> System</h1>
+            </a>
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/add">Add Book</a></li>
+                        <li><a href="/search">Search Book</a></li>
+                    </ul>
+                </nav>
+                {{user_nav}}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Notification Message Banner -->
+        {{alert_message}}
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">Book Inventory</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Manage all available books in the library</p>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span class="badge badge-category" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Total Books: {{total_books}}</span>
+                    <a href="/add" class="btn btn-primary">+ Add New Book</a>
+                </div>
+            </div>
+
+            <!-- Book List Table -->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Book Title</th>
+                            <th>Author Name</th>
+                            <th>Category</th>
+                            <th style="width: 120px;">Quantity</th>
+                            <th style="width: 180px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{books_table}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>B.Tech CSE Project &bull; Library Management System &bull; Pure Python & MySQL</p>
+    </footer>
+
+</body>
+</html>

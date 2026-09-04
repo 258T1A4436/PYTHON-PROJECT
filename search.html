@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Books - Library Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h1>College <span>Library</span> System</h1>
+            </a>
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/add">Add Book</a></li>
+                        <li><a href="/search" class="active">Search Book</a></li>
+                    </ul>
+                </nav>
+                {{user_nav}}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">Search Books</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Find books by book title or author name</p>
+                </div>
+                <a href="/add" class="btn btn-primary">+ Add New Book</a>
+            </div>
+
+            <!-- Search Form -->
+            <form action="/search" method="GET" class="search-box">
+                <input type="text" name="query" class="form-control" placeholder="Type book title or author name..." value="{{search_query}}" required>
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a href="/search" class="btn btn-secondary">Reset</a>
+            </form>
+
+            <!-- Search Status & Results Table -->
+            {{search_summary}}
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Book Title</th>
+                            <th>Author Name</th>
+                            <th>Category</th>
+                            <th style="width: 120px;">Quantity</th>
+                            <th style="width: 180px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{results_table}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>B.Tech CSE Project &bull; Library Management System &bull; Pure Python & MySQL</p>
+    </footer>
+
+</body>
+</html>

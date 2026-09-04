@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Library Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-wrapper">
+        <div class="card auth-card">
+            <div class="auth-header">
+                <div class="brand-icon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <line x1="19" y1="8" x2="19" y2="14"></line>
+                        <line x1="22" y1="11" x2="16" y2="11"></line>
+                    </svg>
+                </div>
+                <h2>Create an Account</h2>
+                <p>Register to manage books in the Library System</p>
+            </div>
+
+            <!-- Alert Notification Banner -->
+            {{alert_message}}
+
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username (min 3 chars)" value="{{username_val}}" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Create a password (min 4 chars)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Register Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
