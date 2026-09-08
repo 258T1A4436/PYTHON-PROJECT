@@ -6,18 +6,18 @@ Features automatic table creation, initial data seeding, and smart password
 fallback detection for beginner ease-of-use.
 =============================================================================
 """
-
+import os
 import mysql.connector
 from mysql.connector import Error
 
 # Database connection configuration settings
 # Adjust 'user' and 'password' according to your local MySQL installation
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'Sreeja@25',          # Enter your MySQL root password here if known
-    'database': 'library_management',
-    'port': 3306
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'user': os.environ.get('DB_USER', 'root'),
+    'password': os.environ.get('DB_PASSWORD', ''),
+    'database': os.environ.get('DB_NAME', 'library_management'),
+    'port': int(os.environ.get('DB_PORT', '3306'))
 }
 
 # Common default passwords used in student/developer environments for auto-detection fallback
